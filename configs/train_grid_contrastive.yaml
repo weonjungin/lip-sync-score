@@ -1,0 +1,57 @@
+seed: 42
+device: cuda
+
+train:
+  out_dir: logs/expB1
+  epochs: 20
+  batch_size: 32
+  num_workers: 8
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  save_every: 1
+  val_every: 1
+  resume_ckpt: null
+
+model:
+  name: syncnet_temporal   # ours 모델
+  ckpt: null               # random init
+  init_from_pretrained: false
+  in_frames: 11            # 기존 세팅 (맞게 수정 가능)
+  pooling: attn          # 기존 config 맞춰
+  temporal:
+    type: gru
+    num_layers: 2
+    bidirectional: true
+    dropout: 0.1
+
+data:
+  processed_root: /media/HDD/jiweon/GRID/processed_SN/fullface
+  audio_type: mel       
+
+  sampling:
+    N: 11
+    margin_trim: 0.15
+    p_back: 0.65
+
+loss:
+  name: contrastive
+  margin: 1.5
+  lambda_pos: 1.0
+  lambda_neg: 1.8
+
+eval:
+  split: hdtf
+  test_list: /home/jiweon/projects/lip-sync-score/data/HDTF/hdtf_eval_200.txt
+  processed_root: /media/HDD/jiweon/processed/HDTF/ours
+
+  num_utts: 200
+  samples_per_utt: 5
+  offset:
+    min: -35
+    max: 35
+    step: 1
+
+scheduler:
+  name: cosine
+  t_max: 20
+  eta_min: 1.0e-6
