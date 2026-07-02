@@ -20,6 +20,10 @@ Audio-driven lip-sync 생성 모델(ADLip2)의 립싱크 동기화 평가를 위
 
 GRID는 화자 수가 적고 발화 스크립트가 제한적인 데이터셋이라, 단일 데이터셋 학습만으로는 일반화 성능이 떨어진다는 것을 위 실험으로 확인했습니다. `train_grid_*` 결과 폴더의 `eval_curve.csv`, `eval_bad_utts.csv`는 GRID로 학습한 모델을 HDTF 발화로 교차 평가한 결과이며, 파일명의 `hdtf`는 평가 대상 데이터셋을 의미합니다. 이후 HDTF 데이터셋 하나로 학습 및 평가를 통일한 `train_hdtf_contrastive`가 최종 모델입니다.
 
+최종 모델(`train_hdtf_contrastive`)의 offset curve 평가 결과:
+
+![train_hdtf_contrastive eval curve](results/train_hdtf_contrastive/eval_curve_plot.png)
+
 ## 레포 구조
 
     lip-sync-score/
