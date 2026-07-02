@@ -1,0 +1,47 @@
+{
+  "dataset": "GRID",
+  "orig_path": "/media/HDD/jiweon/GRID/raw/data/s1_processed/bbaf2n.mpg",
+  "speaker": "s1",
+  "clip_id": "bbaf2n",
+  "video_fps": 25.0,
+  "frame_count_reported": 75,
+  "roi_dir": "roi",
+  "roi_size": 96,
+  "roi_gray": true,
+  "sr": 16000,
+  "wav_path": "audio.wav",
+  "audio_feature_fps": 100,
+  "n_fft_audio": 512,
+  "hop_length_audio": 160,
+  "win_length_audio": 400,
+  "n_mels": 80,
+  "n_mfcc": 13,
+  "mel_path": "mel_80_100hz.npy",
+  "mfcc_path": "mfcc_13_100hz.npy",
+  "lip_stats": {
+    "n_frames": 75,
+    "n_no_face": 0,
+    "n_multi_face": 0,
+    "n_saved": 75,
+    "no_face_ratio": 0.0,
+    "multi_face_ratio": 0.0,
+    "motion_energy": 3.0831764288045265,
+    "params": {
+      "smooth_alpha": 0.4,
+      "min_side_px": 20,
+      "out_size": 96,
+      "gray": true
+    }
+  },
+  "num_frames_saved": 75,
+  "num_audio_samples": 47648,
+  "mel_shape": [
+    80,
+    298
+  ],
+  "mfcc_shape": [
+    13,
+    298
+  ],
+  "audio_frames": 298
+}
