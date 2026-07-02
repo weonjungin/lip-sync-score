@@ -1,0 +1,46 @@
+{
+  "dataset": "HDTF",
+  "orig_path": "/media/HDD/ihjung/HDTF/clips/RD_Radio10_000_1215_1295.mp4",
+  "sample_id": "RD_Radio10_000_1215_1295",
+  "video_fps": 25.0,
+  "frame_count_reported": 81,
+  "roi_dir": "roi",
+  "roi_size": 96,
+  "roi_gray": true,
+  "sr": 16000,
+  "wav_path": "audio.wav",
+  "audio_feature_fps": 100,
+  "n_fft_audio": 512,
+  "hop_length_audio": 160,
+  "win_length_audio": 400,
+  "n_mels": 80,
+  "n_mfcc": 13,
+  "mel_path": "mel_80_100hz.npy",
+  "mfcc_path": "mfcc_13_100hz.npy",
+  "lip_stats": {
+    "n_frames": 81,
+    "n_no_face": 0,
+    "n_multi_face": 0,
+    "n_saved": 81,
+    "no_face_ratio": 0.0,
+    "multi_face_ratio": 0.0,
+    "motion_energy": 4.595788592845201,
+    "params": {
+      "smooth_alpha": 0.4,
+      "min_side_px": 20,
+      "out_size": 96,
+      "gray": true
+    }
+  },
+  "num_frames_saved": 81,
+  "num_audio_samples": 51883,
+  "mel_shape": [
+    80,
+    325
+  ],
+  "mfcc_shape": [
+    13,
+    325
+  ],
+  "audio_frames": 325
+}

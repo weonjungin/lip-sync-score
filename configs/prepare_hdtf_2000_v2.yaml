@@ -1,0 +1,17 @@
+# configs/prepare_hdtf_2000_v2.yaml
+prepare:
+  hdtf_root: /media/HDD/ihjung/HDTF/clips
+  out: data/HDTF/processed_2000_v2
+  limit: 2000
+
+  roi_size: 96
+  smooth_alpha: 0.4
+  min_side_px: 20
+
+  sr: 16000
+  n_fft_audio: 512
+  hop_length_audio: 160
+  win_length_audio: 400
+  n_mels: 80
+  n_mfcc: 13
+  min_lip_frames: 5

@@ -1,0 +1,81 @@
+# configs/expN11.yaml
+# 목적: Contrastive → Margin Ranking Loss 변경 실험
+# margin 0.2 → 0.5 → 1.0 → 1.5
+
+seed: 42
+device: cuda
+
+data:
+  processed_root: /home/jiweon/projects/lip-sync-score/data/GRID/processed_LSS
+
+  loader:
+    num_workers: 4
+    pin_memory: true
+    drop_last: true
+
+  sampling:
+    N: 11
+    margin_trim: 0.15
+    p_back: 0.65
+
+    max_shift_sec: 2.0
+    min_sep_frames: 3
+
+    neg_sampling:
+      hard_prob: 0.7
+      hard_range: [3, 10]
+      avoid_zero: true
+
+
+split:
+  type: speaker_disjoint
+  train_ratio: 0.85
+  val_ratio: 0.10
+
+
+model:
+  name: syncnet_temporal
+  in_frames: 11
+  emb_dim: 256
+
+  pooling: attn
+
+  temporal:
+    type: gru
+    num_layers: 2
+    bidirectional: true
+    hidden_dim: 256
+
+
+# loss 변경
+loss:
+  name: margin_ranking
+  margin: 0.5
+
+
+train:
+  epochs: 20
+  batch_size: 64
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  amp: true
+
+  out_dir: logs/expN11
+  log_every: 200
+  save_every_epoch: true
+  resume_ckpt: ""
+
+
+eval:
+  split: test
+
+  num_utts: 2000
+  samples_per_utt: 5
+
+  offset:
+    min: -35
+    max: 35
+    step: 1
+
+  save_plots: false
+  plot_limit: 30

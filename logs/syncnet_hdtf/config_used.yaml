@@ -1,0 +1,43 @@
+seed: 42
+device: cuda
+data:
+  type: hdtf
+  latent_root: /media/HDD/jiweon/hdtf_latents
+  data_root: /home/ihjung/HDTF_ssd/processed
+  train_split: /home/jiweon/projects/ADLip2/data/splits/train.txt
+  val_split: /home/jiweon/projects/ADLip2/data/splits/val.txt
+  loader:
+    num_workers: 4
+    pin_memory: true
+    drop_last: true
+  sampling:
+    N: 16
+    min_gap: 5
+    max_gap: 100
+    samples_per_video: 200
+model:
+  name: syncnet_temporal
+  in_frames: 16
+  emb_dim: 256
+  pooling: attn
+  lip_in_channels: 4
+  temporal:
+    type: gru
+    num_layers: 2
+    bidirectional: true
+    hidden_dim: 256
+loss:
+  name: contrastive
+  margin: 1.0
+  lambda_pos: 1.0
+  lambda_neg: 1.8
+train:
+  epochs: 30
+  batch_size: 64
+  lr: 0.0001
+  weight_decay: 0.0001
+  amp: true
+  out_dir: logs/syncnet_hdtf
+  log_every: 200
+  save_every_epoch: true
+  resume_ckpt: ''

@@ -1,0 +1,18 @@
+# /home/jiweon/projects/lip-sync-score/configs/prepare_hdtf_fullface_from_pycrop.yaml
+
+prepare:
+  pycrop_root: /media/HDD/jiweon/GRID/processed_SN/pycrop
+  out: /media/HDD/jiweon/GRID/processed_SN/fullface
+
+  limit: null
+  min_roi_frames: 5
+
+  roi_size: 96
+  gray: true
+
+  sr: 16000
+  n_fft_audio: 512
+  hop_length_audio: 160
+  win_length_audio: 400
+  n_mels: 80
+  n_mfcc: 13

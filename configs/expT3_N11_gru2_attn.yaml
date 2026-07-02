@@ -1,0 +1,59 @@
+seed: 42
+device: cuda
+
+data:
+  processed_root: /home/jiweon/projects/lip-sync-score/data/GRID/processed_LSS
+
+  loader:
+    num_workers: 4
+    pin_memory: true
+    drop_last: true
+
+  sampling:
+    N: 11
+    margin_trim: 0.15
+    p_back: 0.65
+    max_shift_sec: 2.0
+    min_sep_frames: 11
+
+split:
+  type: speaker_disjoint
+  train_ratio: 0.85
+  val_ratio: 0.10
+
+model:
+  name: syncnet_temporal
+  in_frames: 11
+  emb_dim: 256
+  pooling: attn
+
+  temporal:
+    type: gru
+    num_layers: 2        # T3 핵심
+    bidirectional: true
+    hidden_dim: 256
+
+loss:
+  margin: 1.0
+
+train:
+  epochs: 20
+  batch_size: 64
+  lr: 1.0e-4
+  weight_decay: 0.0
+  amp: true
+  out_dir: logs/expT3_N11_gru2_attn
+  log_every: 200
+  save_every_epoch: true
+  resume_ckpt: ""
+
+eval:
+  split: test
+  num_utts: 2000
+  samples_per_utt: 5
+  offset:
+    min: -35
+    max: 35
+    step: 1
+  save_plots: false
+  plot_limit: 30
