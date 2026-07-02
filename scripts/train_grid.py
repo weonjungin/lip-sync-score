@@ -15,7 +15,10 @@ from torch.utils.data import DataLoader
 from lipsyncscore.data.dataset_grid import DatasetGRID
 from lipsyncscore.models.syncnet_like import SyncNetLike
 from lipsyncscore.models.modified.syncnet_temporal import SyncNetTemporal
-from lipsyncscore.models.modified.syncnet_crossattn import SyncNetCrossAttn
+try:
+    from lipsyncscore.models.modified.syncnet_crossattn import SyncNetCrossAttn
+except ImportError:
+    SyncNetCrossAttn = None
 from lipsyncscore.loss.contrastive import SyncNetContrastiveLoss
 from lipsyncscore.loss.margin_ranking import SyncNetMarginRankingLoss
 from lipsyncscore.loss.infonce import SyncNetInfoNCELoss
