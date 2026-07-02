@@ -96,7 +96,7 @@ GRID는 화자 수가 적고 발화 스크립트가 제한적인 데이터셋이
 
 ## ADLip2 연동
 
-`train_hdtf_contrastive`로 학습된 체크포인트(`results/train_hdtf_contrastive/best.pth`)는 [ADLip2](https://github.com/weonjungin/ADLip2)에서 LatentSync loss와 결합된 립 특화 contrastive loss(SyncLT)로 사용되었습니다. 두 loss를 결합했을 때 42개 테스트 비디오 기준 LSE-C 5.696, LSE-D 8.853을 달성했습니다.
+`train_hdtf_contrastive`로 학습된 체크포인트(`results/train_hdtf_contrastive/best.pth`)는 [ADLip2](https://github.com/weonjungin/ADLip2)에서 LatentSync loss와 결합된 립 특화 contrastive loss(SyncLT)로 사용되었습니다. 두 loss를 결합했을 때 42개 테스트 비디오 기준 LSE-C 5.966, LSE-D 8.583을 달성했습니다.
 
 ## 참고
 
